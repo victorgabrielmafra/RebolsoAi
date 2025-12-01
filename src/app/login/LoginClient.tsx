@@ -111,9 +111,71 @@ export default function LoginClient() {
     }
   }
 
-  return (
-    <div>
-      ✅ Seu layout atual continua aqui normalmente (sem mudar nada visual)
-    </div>
-  )
-}
+return (
+  <div className="min-h-screen bg-gradient-to-br from-[#2266FF]/5 via-white to-[#4488FF]/5 flex items-center justify-center p-4">
+    <div className="w-full max-w-md">
+
+      <Link href="/" className="flex items-center justify-center gap-2 mb-8">
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2266FF] to-[#4488FF] flex items-center justify-center">
+          <Sparkles className="w-7 h-7 text-white" />
+        </div>
+        <span className="text-3xl font-bold text-[#1A1A1A]">ReembolsAí</span>
+      </Link>
+
+      <Card className="border-2 shadow-xl">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl font-bold text-center">Entrar na sua conta</CardTitle>
+          <CardDescription className="text-center">
+            Digite seu e-mail e senha para acessar
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+
+            {error && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            {success && (
+              <Alert className="border-green-200 bg-green-50">
+                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <AlertDescription className="text-green-800">{success}</AlertDescription>
+              </Alert>
+            )}
+
+            {showResendButton && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleResendVerification}
+                disabled={resendingEmail || resendCooldown > 0}
+                className="w-full"
+              >
+                {resendingEmail ? "Reenviando..." : "Reenviar e-mail"}
+              </Button>
+            )}
+
+            <div>
+              <Label>Email</Label>
+              <Input
+                type="email"
+                value={formData.email}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+
+            <div>
+              <Label>Senha</Label>
+              <Input
+                type="password"
+                value={formData.password}
+                onChange={e => setFormData({ ...formData, password: e.target.value })}
+              />
+            </div>
+
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Entrando..." : "Ent
