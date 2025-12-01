@@ -177,5 +177,7 @@ return (
               />
             </div>
 
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Entrando..." : "Ent
+<Button type="submit" className="w-full" disabled={loading}>
+  {loading ? "Entrando..." : "Entrar"}
+</Button>
+
