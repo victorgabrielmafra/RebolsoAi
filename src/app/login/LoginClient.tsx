@@ -54,7 +54,7 @@ export default function LoginClient() {
   }
 
   return (
-    <div style={{ maxWidth: 400, margin: "0 auto", marginTop: 80 }}>
+    <div style={{ maxWidth: 400, margin: "80px auto" }}>
       <h1>Login</h1>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
